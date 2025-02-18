@@ -25,7 +25,27 @@ public class Taxation {
         choice = scanner.nextInt();
 
         switch(choice) {
-
+            case 1:
+                System.out.println("Option 1 selected");
+                break;
+            case 2:
+                System.out.println("Option 2 selected");
+                break;
+            case 3:
+                System.out.println("Option 3 selected");
+                break;
+            case 4:
+                System.out.println("Option 4 selected");
+                break;
+            case 5:
+                System.out.println("Option 5 selected");
+                break;
+            case 0:
+                System.out.println("Option 0 selected");
+                break;
+            default:
+                System.out.println("Wrong Choice !!!");
+                break;
         }
     }
 }
