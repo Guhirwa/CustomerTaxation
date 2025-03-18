@@ -79,7 +79,7 @@ public class Taxation {
         System.out.print("Enter your National ID: ");
         String NID = scanner.next();
 
-        String sql = "INSERT INTO taxation_payer (name, tin, amount, NID) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO TaxPayer(name, tin, amount, NID) VALUES (?, ?, ?, ?)";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, names);
             pstmt.setString(2, tin);
@@ -104,7 +104,7 @@ public class Taxation {
         System.out.print("Enter new amount: ");
         double newAmount = scanner.nextDouble();
 
-        String sql = "UPDATE taxation_payer SET amount = ? WHERE tin = ?";
+        String sql = "UPDATE TaxPayer SET amount = ? WHERE tin = ?";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setDouble(1, newAmount);
             pstmt.setString(2, tinToUpdate);
@@ -125,7 +125,7 @@ public class Taxation {
         System.out.print("Enter TIN of the tax payer to search: ");
         String tinToSearch = scanner.next();
 
-        String sql = "SELECT * FROM taxation_payer WHERE tin = ?";
+        String sql = "SELECT * FROM TaxPayer WHERE tin = ?";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, tinToSearch);
             ResultSet rs = pstmt.executeQuery();
@@ -147,7 +147,7 @@ public class Taxation {
         System.out.print("Enter TIN of the tax payer to delete: ");
         String tinToDelete = scanner.next();
 
-        String sql = "DELETE FROM taxation_payer WHERE tin = ?";
+        String sql = "DELETE FROM TaxPayer WHERE tin = ?";
         try (Connection conn = getConnection(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, tinToDelete);
             int rowsAffected = pstmt.executeUpdate();
@@ -163,7 +163,7 @@ public class Taxation {
 
     // Method to display all tax payers
     private static void displayAllTaxPayers() {
-        String sql = "SELECT * FROM taxation_payer";
+        String sql = "SELECT * FROM TaxPayer";
         try (Connection conn = getConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             System.out.println("List of all tax payers:");
             while (rs.next()) {
